@@ -1,5 +1,4 @@
 
-
 // Ignore this function
 //
 if(!Array.prototype.equals) {
@@ -72,6 +71,7 @@ if(!Array.prototype.equals) {
 var z = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function fillArray(a, value) {
+  z.length
   // fill it
 }
 
@@ -83,8 +83,12 @@ console.log("zero(z, 5): " + (fillArray(z, 5).equals([5, 5, 5, 5, 5, 5, 5, 5, 5,
 //
 var a = [1, 2, 3, 4, 5, 6, 7, 8];
 
-function sum(a) {
-  // Return sum
+function sum(array) {
+    var total = 0;
+    for (i = 0; i <= array.length - 1; i++) {
+        total += array[i];
+    }
+    return total;
 }
 
 console.log("sum(a): " + (sum(a) === 36));
@@ -93,8 +97,11 @@ console.log("sum(a): " + (sum(a) === 36));
 //
 var a1 = [23, 17, 23, 42, 8, 2, 73, 101, 83, 92];
 
-function average(a) {
+function average(array) {
   // return average
+    var average = 0;
+    average = sum(array)/(array.length);
+    return average;
 }
 
 console.log("average(a1): " + (average(a1) === 46.4));
@@ -105,8 +112,17 @@ console.log("average(a1): " + (average(a1) === 46.4));
 var a2 = [1,2,4,4,6,7,8,9,12];
 var a3 = [4,5,9,10,11,15,22,20,21,21];
 
-function median(a) {
+function median(array) {
   // return median
+    var median;
+    if (array.length%2 !== 0) {
+      var median = array[(array.length-1)/2];
+      return median;
+    }
+    else {
+      var median = array[(array.length)/2];
+      return median;
+    }
 }
 
 console.log("median(a2): " + (median(a2) === 6));
@@ -117,8 +133,21 @@ console.log("median(a3): " + (median(a3) === 13));
 //
 var a4 = ["zero", "one", "two", "three", "four", "five"];
 
-function findIndex(a, value) {
+function findIndex(array, value) {
   // return index or null
+    for (var i = 0; i <= array.length -1; i++) {
+      var indexPosition;
+      if (array[i] == value) {
+          console.log("Found it!");
+          indexPosition = i;
+          console.log(indexPosition);
+      }
+      else {
+       // console.log("Couldn't find it!");
+      }
+    }
+    return indexPosition;
+    console.log(indexPosition);
 }
 
 console.log("findIndex('three'): " + (findIndex(a4, "three") === 3));
@@ -128,9 +157,13 @@ console.log("findIndex('three'): " + (findIndex(a4, "three") === 3));
 //
 var a5 = [4, 3, 8, 8, 6, 9, 10, 12, 10, 9, 0, 5, 16, 2];
 
-function findNthLastOdd(a, n) {
-  // return nth last add
-  //
+function findNthLastOdd(array, n) {
+  // return nth last odd
+    for (var i = array.length - 1; i >= 0; i--) {
+      if (array[i]%2 === 1) {
+        console.log(array[i]);
+      }
+    }
 }
 
 console.log("findNthLastOdd(a5, 1): " + (findNthLastOdd(a5, 1) === 11));
@@ -142,8 +175,13 @@ console.log("findNthLastOdd(a5, 4): " + (findNthLastOdd(a5, 4) === 1));
 //
 var a6 = [0, 1, 2, 3, 4, 5, 10, 15, 23, 54, 22, 1, 8, 4, 2, 2, 2, 0, 1];
 
-function getAverageOfRange(a, start, end) {
+function getAverageOfRange(array, start, end) {
   // return average of values selected from a subarray
+    var arrayRange =[];
+    for (var i = start; i <= end; i++) {
+      arrayRange.push(array[i]);
+    }
+    console.log("Average for the selected range: " + average(arrayRange));
 }
 
 console.log("getAverageOfRange(a6, 5, 9): " + (getAverageOfRange(a6, 5, 9) === 21.4));
